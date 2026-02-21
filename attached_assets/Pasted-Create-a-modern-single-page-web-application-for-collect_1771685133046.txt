@@ -1,0 +1,74 @@
+Create a modern single-page web application for collecting and displaying user feedback.
+
+Tech Stack:
+- Frontend: HTML, CSS (modern responsive styling), Vanilla JS
+- Backend: Node.js with Express
+- Database: SQLite (or simple JSON file DB if needed)
+- Everything should run in a single Replit project
+
+Requirements:
+
+1. Single Page Layout:
+   - A clean, modern, minimal UI
+   - Responsive design (mobile friendly)
+   - Smooth animations and subtle hover effects
+   - Card-style layout for reviews
+   - Soft shadows, rounded corners, modern font (like Inter or Poppins)
+
+2. Header Section:
+   - Display a logo at the top (I will provide the image file named "logo.png")
+   - Display website name: "<WEBSITE_NAME>" (make this easily changeable at top of file)
+   - Centered layout
+   - Clean hero-style header section
+
+3. Feedback Form Section:
+   - Fields:
+       - Name (required)
+       - Email (required, validate format)
+       - Message (required, textarea)
+   - Submit button with hover animation
+   - Show inline validation errors
+   - On successful submission:
+       - Clear the form
+       - Show a small success message
+       - Automatically display the new review below without refreshing the page
+
+4. Database:
+   - Store name, email, message, and created_at timestamp
+   - Use SQLite database
+   - Create table automatically if it does not exist
+
+5. Reviews Display Section:
+   - Display all feedback entries below the form
+   - Show:
+        - Name
+        - Message
+        - Formatted timestamp
+   - Display in card layout
+   - Newest entries on top
+   - Load all entries when page loads
+
+6. Backend API:
+   - POST /api/feedback → Save feedback
+   - GET /api/feedback → Fetch all feedback
+
+7. Extra:
+   - Use async/await properly
+   - Handle errors properly
+   - Clean folder structure
+   - Comment the code properly
+   - Make UI look modern like a startup landing page
+
+8. Deliverables:
+   - server.js
+   - index.html
+   - style.css
+   - script.js
+   - database setup logic
+   - Clear instructions in comments on how to run
+
+Make sure the app runs using:
+    npm install
+    node server.js
+
+Do NOT overcomplicate. Keep it clean and elegant.

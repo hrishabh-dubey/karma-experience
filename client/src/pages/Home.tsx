@@ -14,74 +14,75 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-background font-sans selection:bg-primary/10 selection:text-primary">
+    <div className="h-screen bg-background relative overflow-hidden flex flex-col">
       <Header />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
+      <main className="flex-1 max-w-[1400px] mx-auto w-full px-6 py-8 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-10 h-full">
           
-          {/* Left Column: Form */}
-          <div className="lg:col-span-5 xl:col-span-4 order-1">
+          {/* Left Column: Form (35%) */}
+          <div className="lg:col-span-4 h-full">
             <FeedbackForm />
           </div>
 
-          {/* Right Column: Feed */}
-          <div className="lg:col-span-7 xl:col-span-8 order-2">
+          {/* Right Column: Feed (65%) */}
+          <div className="lg:col-span-6 flex flex-col h-full overflow-hidden">
             <div className="mb-8">
-              <h2 className="text-3xl font-bold tracking-tight">
-                Community Feedback
+              <h2 className="text-4xl font-bold tracking-tight text-primary">
+                Cosmic Voices
               </h2>
-              <p className="text-muted-foreground mt-2 text-lg">
-                See the journey of others with The Karma Compass.
+              <p className="text-muted-foreground mt-2 text-lg font-medium">
+                "See the impact of Karma shared by our community"
               </p>
             </div>
 
-            {isLoading ? (
-              <div className="space-y-6">
-                {[1, 2, 3].map((i) => (
-                  <div key={i} className="h-32 bg-white rounded-xl animate-pulse shadow-sm border border-border p-6">
-                    <div className="flex gap-4">
-                      <div className="h-10 w-10 bg-muted rounded-full"></div>
-                      <div className="flex-1 space-y-2">
-                        <div className="h-4 bg-muted rounded w-1/4"></div>
-                        <div className="h-4 bg-muted rounded w-full"></div>
-                      </div>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : error ? (
-              <div className="p-8 rounded-xl bg-destructive/10 border border-destructive/20 text-destructive text-center font-medium">
-                Failed to load feedback. Please try again later.
-              </div>
-            ) : sortedFeedbacks?.length === 0 ? (
-              <div className="text-center py-20 bg-white rounded-2xl border border-dashed border-border">
-                <div className="w-16 h-16 bg-muted rounded-full flex items-center justify-center mx-auto mb-4 text-muted-foreground/30">
-                  <MessageSquareDashed className="w-8 h-8" />
+            <div className="flex-1 min-h-0">
+              {isLoading ? (
+                <div className="space-y-6">
+                  {[1, 2, 3].map((i) => (
+                    <div key={i} className="h-32 parchment-card animate-pulse opacity-50 p-6" />
+                  ))}
                 </div>
-                <h3 className="text-lg font-medium text-foreground">No feedback yet</h3>
-                <p className="text-muted-foreground mt-1">Be the first to share your thoughts!</p>
-              </div>
-            ) : (
-              <div className="max-h-[800px] overflow-y-auto pr-4 space-y-6 scrollbar-thin scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 transition-colors">
-                {sortedFeedbacks?.map((feedback, index) => (
-                  <FeedbackCard 
-                    key={feedback.id} 
-                    feedback={feedback} 
-                    index={index} 
-                  />
-                ))}
-              </div>
-            )}
+              ) : error ? (
+                <div className="p-8 parchment-card text-destructive text-center font-bold">
+                  The cosmic connection failed. Please try again.
+                </div>
+              ) : sortedFeedbacks?.length === 0 ? (
+                <div className="text-center py-20 parchment-card border-dashed">
+                  <div className="w-20 h-20 bg-primary/5 rounded-full flex items-center justify-center mx-auto mb-6 text-primary/20">
+                    <MessageSquareDashed className="w-10 h-10" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-primary">No Karma Shared Yet</h3>
+                  <p className="text-muted-foreground mt-2 font-medium">Be the first to share your enlightenment!</p>
+                </div>
+              ) : (
+                <div className="h-full overflow-y-auto custom-scrollbar pr-4 space-y-8 pb-10">
+                  {sortedFeedbacks?.map((feedback, index) => (
+                    <FeedbackCard 
+                      key={feedback.id} 
+                      feedback={feedback} 
+                      index={index} 
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
 
         </div>
       </main>
       
-      {/* Decorative background blobs */}
-      <div className="fixed top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl translate-y-1/3 -translate-x-1/3"></div>
+      {/* Spiritual background elements */}
+      <div className="fixed inset-0 overflow-hidden -z-10 pointer-events-none opacity-[0.03] select-none">
+        <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-primary rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-primary rounded-full blur-[150px] translate-x-1/3 translate-y-1/3" />
+        
+        {/* Mandala SVG pattern placeholder/decoration */}
+        <div className="absolute top-10 right-10 w-64 h-64 border-2 border-primary rounded-full flex items-center justify-center opacity-20 rotate-45">
+          <div className="w-48 h-48 border border-primary rounded-full flex items-center justify-center">
+            <div className="w-32 h-32 border border-primary rounded-full" />
+          </div>
+        </div>
       </div>
     </div>
   );

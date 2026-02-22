@@ -1,55 +1,70 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --font-sans: 'Inter', sans-serif;
-  --font-display: 'Poppins', sans-serif;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Poppins', sans-serif;
 
-  /* Astrology Theme - Teal, Gold, Cream */
-  --background: 40 33% 98%;
-  --foreground: 180 50% 10%;
+  /* Bhagwa (Saffron) Theme */
+  --background: 30 40% 98%; /* Warm Parchment */
+  --foreground: 20 50% 15%; /* Deep Brownish Teal */
 
-  --primary: 180 100% 25%;
-  --primary-foreground: 45 100% 95%;
+  --primary: 25 90% 50%; /* Deep Saffron #e76f00 */
+  --primary-foreground: 40 100% 98%;
 
-  --secondary: 45 100% 42%;
-  --secondary-foreground: 180 50% 10%;
+  --secondary: 35 90% 55%; /* Warm Saffron #f4a261 */
+  --secondary-foreground: 20 50% 10%;
 
-  --muted: 180 10% 96%;
-  --muted-foreground: 180 20% 45%;
+  --muted: 35 30% 92%; /* Soft Beige */
+  --muted-foreground: 25 40% 40%;
 
-  --accent: 45 100% 96%;
-  --accent-foreground: 45 100% 20%;
+  --accent: 45 100% 92%; /* Golden Glow */
+  --accent-foreground: 25 80% 30%;
 
-  --border: 180 20% 90%;
-  --input: 180 20% 90%;
-  --ring: 180 100% 25%;
+  --border: 25 30% 85%;
+  --input: 25 30% 85%;
+  --ring: 25 90% 50%;
 
-  --radius: 0.75rem;
+  --radius: 1rem;
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-background text-foreground antialiased overflow-hidden;
     font-family: var(--font-sans);
+    height: 100vh;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display);
-    @apply font-bold tracking-tight text-primary;
+  h1, h2, h3 {
+    font-family: var(--font-serif);
+    @apply tracking-tight text-primary;
   }
 }
 
-/* Custom utilities for glassmorphism and modern cards */
 @layer utilities {
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  .parchment-card {
+    @apply bg-[#fdfaf1] border border-[#e8dfc4] shadow-md rounded-2xl;
+    background-image: url("https://www.transparenttextures.com/patterns/parchment.png");
   }
-  
-  .card-hover {
-    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/20;
+
+  .saffron-gradient {
+    @apply bg-gradient-to-r from-[#f4a261] to-[#e76f00];
+  }
+
+  .saffron-glow {
+    box-shadow: 0 0 20px rgba(231, 111, 0, 0.2);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-muted/50;
+  }
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-primary/40 rounded-full hover:bg-primary/60 transition-colors;
   }
 }

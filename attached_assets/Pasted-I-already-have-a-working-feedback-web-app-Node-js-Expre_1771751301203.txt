@@ -1,0 +1,98 @@
+I already have a working feedback web app (Node.js + Express + HTML + CSS + JS + SQLite).
+Do NOT change backend logic or API routes.
+Only redesign the frontend UI to match a spiritual Hindu-themed saffron design.
+
+GOAL:
+Transform the current modern plain UI into a spiritual, bhagwa (saffron) themed interface similar to a divine temple aesthetic.
+
+-----------------------------------
+DESIGN REQUIREMENTS
+-----------------------------------
+
+1. Overall Theme:
+- Use saffron / bhagwa color palette (#f4a261, #e76f00, #d97706, warm beige tones)
+- Background should have a soft spiritual texture (mandala pattern faintly in corners)
+- Add subtle temple silhouette faded on right side background
+- Add a soft radial golden glow behind main header
+
+2. Header Section:
+- Logo must be on LEFT side (properly aligned, not floating)
+- Website Title: "The Karma Compass"
+- Title centered horizontally in page
+- Add small Om symbol above title (subtle, golden tone)
+- Tagline below title:
+  "Share Your Karma & Enlighten the Journey"
+
+Header alignment must look clean and symmetrical.
+Logo vertically aligned with title block.
+
+3. Layout Structure:
+- Two column layout (fixed full height viewport)
+- Left side: Form (35%)
+- Right side: Cosmic Voices section (65%)
+- Entire page height = 100vh
+- Page should NOT scroll
+- Only feedback list should scroll
+
+4. Scroll Behavior:
+- Body overflow must be hidden
+- Feedback list container must use:
+    overflow-y: auto;
+    flex: 1;
+- Add custom saffron scrollbar styling
+
+5. Form Section (Left Card):
+- Title: "Share Your Karma Experience"
+- Subtitle text:
+  "Let your karma speak. Your words are energy — and energy never fades."
+- Increase textarea height so it visually balances with right panel
+- Card background: soft parchment-like beige
+- Rounded corners (16px)
+- Soft shadow
+- Submit button:
+    - Deep saffron gradient
+    - Slight glow
+    - Hover: lift effect
+
+6. Right Section:
+- Title: "Cosmic Voices"
+- Subtitle:
+  "See the impact of Karma shared by our community"
+- Below this, scrollable feedback container
+
+7. Feedback Cards:
+- Light parchment card style
+- Slight border glow
+- Rounded 14px
+- Proper spacing between cards
+- Avatar circle should use saffron gradient
+- Timestamp smaller and subtle
+- Smooth fade-in animation on load
+
+8. Alignment Fix:
+- Remove any extra wrapper divs causing uneven spacing
+- Ensure:
+    .right-panel uses flex column
+    .voices-container uses flex:1
+- Cards aligned properly inside container
+- No uneven margins
+
+9. Typography:
+- Use elegant serif font for headings (like Playfair Display)
+- Use clean sans-serif for body text (like Poppins or Inter)
+
+10. Important:
+- Keep existing API calls intact
+- Keep database logic untouched
+- Only modify HTML structure and CSS styling
+- Maintain responsiveness for mobile
+
+-----------------------------------
+END RESULT SHOULD:
+-----------------------------------
+Look like a spiritual saffron temple-inspired karma feedback platform,
+not a corporate dashboard.
+It should feel calm, divine, and warm.
+
+Generate full updated HTML and CSS.
+Do not remove functionality.

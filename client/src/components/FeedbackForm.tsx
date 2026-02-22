@@ -46,28 +46,29 @@ export function FeedbackForm() {
   };
 
   return (
-    <div className="parchment-card p-8 saffron-glow h-full flex flex-col">
-      <div className="mb-8 text-center">
-        <h2 className="text-3xl font-bold text-primary mb-2">
+    <div className="flex flex-col h-full">
+      <div className="mb-6">
+        <h2 className="text-3xl font-bold text-[#5c3d2e] mb-2">
           Share Your Karma Experience
         </h2>
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          "Let your karma speak. Your words are energy — and energy never fades."
+        <p className="text-[#8b5e3c] text-sm font-medium">
+          Speak your mind and let your energy flow.<br />
+          We're listening to your cosmic vibes ✨
         </p>
       </div>
 
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 flex-1 flex flex-col">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-foreground font-semibold">Name</FormLabel>
+                <FormLabel className="text-[#5c3d2e] font-bold text-lg">Name</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="Your Divine Name" 
-                    className="rounded-lg border-border focus:border-primary focus:ring-primary/20 transition-all bg-white/50" 
+                    placeholder="Your Name" 
+                    className="h-12 rounded-lg border-[#d4c49c] bg-[#fdfaf1]/50 focus:bg-white transition-colors" 
                     {...field} 
                   />
                 </FormControl>
@@ -81,11 +82,11 @@ export function FeedbackForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-foreground font-semibold">Email</FormLabel>
+                <FormLabel className="text-[#5c3d2e] font-bold text-lg">Email</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="spiritual@journey.com" 
-                    className="rounded-lg border-border focus:border-primary focus:ring-primary/20 transition-all bg-white/50" 
+                    placeholder="your@email.com" 
+                    className="h-12 rounded-lg border-[#d4c49c] bg-[#fdfaf1]/50 focus:bg-white transition-colors" 
                     {...field} 
                   />
                 </FormControl>
@@ -98,12 +99,11 @@ export function FeedbackForm() {
             control={form.control}
             name="message"
             render={({ field }) => (
-              <FormItem className="flex-1 flex flex-col">
-                <FormLabel className="text-foreground font-semibold">Message</FormLabel>
-                <FormControl className="flex-1">
+              <FormItem>
+                <FormControl>
                   <Textarea 
-                    placeholder="Share your enlightenment..." 
-                    className="flex-1 min-h-[250px] resize-none rounded-lg border-border focus:border-primary focus:ring-primary/20 transition-all bg-white/50" 
+                    placeholder="Share your karma experience..." 
+                    className="min-h-[150px] rounded-lg border-[#d4c49c] bg-[#fdfaf1]/50 focus:bg-white transition-colors resize-none" 
                     {...field} 
                   />
                 </FormControl>
@@ -112,21 +112,21 @@ export function FeedbackForm() {
             )}
           />
 
-          <motion.div whileHover={{ scale: 1.02, y: -2 }} whileTap={{ scale: 0.98 }}>
+          <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
             <Button 
               type="submit" 
-              className="w-full saffron-gradient hover:opacity-90 text-white font-bold py-7 rounded-xl shadow-lg saffron-glow transition-all duration-300 text-lg"
+              className="w-full divine-button h-14 text-xl tracking-wide rounded-xl"
               disabled={createFeedback.isPending}
             >
               {createFeedback.isPending ? (
                 <>
                   <Loader2 className="mr-2 h-6 w-6 animate-spin" />
-                  Sending Energy...
+                  Chanting...
                 </>
               ) : (
                 <>
-                  <Send className="mr-2 h-6 w-6" />
-                  Submit Feedback
+                  <Send className="mr-3 h-6 w-6" />
+                  Submit Your Feedback
                 </>
               )}
             </Button>

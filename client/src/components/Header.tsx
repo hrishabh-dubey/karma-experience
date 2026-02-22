@@ -2,29 +2,30 @@ import logoImg from "@assets/logo.png";
 
 export function Header() {
   return (
-    <header className="w-full bg-background/90 backdrop-blur-sm border-b border-border/50 sticky top-0 z-50 py-4 h-32">
-      <div className="max-w-[1400px] mx-auto px-6 h-full flex items-center relative">
-        {/* Logo Left */}
-        <div className="flex-shrink-0 absolute left-6">
-          <img 
-            src={logoImg} 
-            alt="The Karma Compass" 
-            className="h-20 w-auto object-contain drop-shadow-sm"
-          />
+    <header className="w-full pt-8 pb-4">
+      <div className="max-w-6xl mx-auto px-6 relative">
+        {/* Om Symbol Top Center */}
+        <div className="flex justify-center mb-2">
+          <span className="text-5xl text-[#5c3d2e] opacity-80 select-none">ॐ</span>
         </div>
 
-        {/* Title Center */}
-        <div className="flex-1 flex flex-col items-center justify-center text-center">
-          <div className="relative">
-            <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-2xl text-primary/80 animate-pulse">
-              ॐ
-            </div>
-            <div className="absolute inset-0 bg-primary/10 blur-3xl rounded-full scale-150 -z-10" />
-            <h1 className="text-4xl font-bold text-primary drop-shadow-sm">
+        <div className="flex items-center justify-center relative py-4">
+          {/* Logo Left-ish but aligned with title */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block">
+            <img 
+              src={logoImg} 
+              alt="Logo" 
+              className="h-28 w-auto object-contain drop-shadow-md"
+            />
+          </div>
+
+          {/* Title and Tagline Center */}
+          <div className="text-center">
+            <h1 className="text-5xl font-bold text-[#5c3d2e] mb-2 tracking-tight">
               The Karma Compass
             </h1>
-            <p className="text-muted-foreground italic font-medium mt-1">
-              "Share Your Karma & Enlighten the Journey"
+            <p className="text-[#8b5e3c] text-xl italic font-medium">
+              Share Your Karma & Enlighten the Journey
             </p>
           </div>
         </div>

@@ -8,63 +8,67 @@
   --font-serif: 'Playfair Display', serif;
   --font-sans: 'Poppins', sans-serif;
 
-  /* Bhagwa (Saffron) Theme */
-  --background: 30 40% 98%; /* Warm Parchment */
-  --foreground: 20 50% 15%; /* Deep Brownish Teal */
+  /* Divine Saffron Theme from Reference */
+  --background: 34 45% 90%; /* Warm Parchment Base */
+  --foreground: 20 40% 20%; /* Deep Earthy Brown */
 
-  --primary: 25 90% 50%; /* Deep Saffron #e76f00 */
+  --primary: 25 85% 45%; /* Saffron Orange #d97706 */
   --primary-foreground: 40 100% 98%;
 
-  --secondary: 35 90% 55%; /* Warm Saffron #f4a261 */
-  --secondary-foreground: 20 50% 10%;
+  --secondary: 35 70% 60%; /* Muted Saffron */
+  --secondary-foreground: 20 40% 15%;
 
-  --muted: 35 30% 92%; /* Soft Beige */
-  --muted-foreground: 25 40% 40%;
+  --muted: 35 30% 85%; /* Aged Paper */
+  --muted-foreground: 25 30% 40%;
 
-  --accent: 45 100% 92%; /* Golden Glow */
-  --accent-foreground: 25 80% 30%;
+  --accent: 45 100% 90%; /* Golden Light */
+  --accent-foreground: 25 60% 25%;
 
-  --border: 25 30% 85%;
-  --input: 25 30% 85%;
-  --ring: 25 90% 50%;
+  --border: 30 40% 75%;
+  --input: 30 40% 85%;
+  --ring: 25 85% 45%;
 
   --radius: 1rem;
 }
 
 @layer base {
   body {
-    @apply bg-background text-foreground antialiased overflow-hidden;
+    @apply bg-background text-foreground antialiased overflow-hidden min-h-screen;
     font-family: var(--font-sans);
-    height: 100vh;
+    background-image: 
+      radial-gradient(circle at 50% 0%, hsla(35, 100%, 70%, 0.15), transparent 70%),
+      url("https://www.transparenttextures.com/patterns/parchment.png");
+    background-attachment: fixed;
   }
 
   h1, h2, h3 {
     font-family: var(--font-serif);
-    @apply tracking-tight text-primary;
+    @apply tracking-tight text-[#5c3d2e]; /* Deep brown for headings */
   }
 }
 
 @layer utilities {
-  .parchment-card {
-    @apply bg-[#fdfaf1] border border-[#e8dfc4] shadow-md rounded-2xl;
+  .parchment-container {
+    @apply bg-[#f4e4bc]/80 backdrop-blur-sm border border-[#d4c49c] shadow-2xl rounded-[2rem];
     background-image: url("https://www.transparenttextures.com/patterns/parchment.png");
   }
 
-  .saffron-gradient {
-    @apply bg-gradient-to-r from-[#f4a261] to-[#e76f00];
+  .parchment-card-refined {
+    @apply bg-[#fff9eb]/90 border border-[#e8dfc4] shadow-sm rounded-xl transition-all duration-300;
+    background-image: url("https://www.transparenttextures.com/patterns/px-brush-stroke.png");
   }
 
-  .saffron-glow {
-    box-shadow: 0 0 20px rgba(231, 111, 0, 0.2);
+  .divine-button {
+    @apply bg-gradient-to-b from-[#e67e22] to-[#d35400] text-white font-bold shadow-[0_4px_0_0_#a04000] active:shadow-none active:translate-y-1 transition-all;
   }
 
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 10px;
   }
   .custom-scrollbar::-webkit-scrollbar-track {
-    @apply bg-muted/50;
+    @apply bg-transparent border-l border-[#d4c49c]/30;
   }
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    @apply bg-primary/40 rounded-full hover:bg-primary/60 transition-colors;
+    @apply bg-[#c18c5d] rounded-full border-4 border-transparent bg-clip-padding;
   }
 }

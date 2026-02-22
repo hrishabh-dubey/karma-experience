@@ -17,17 +17,17 @@ export default function Home() {
     <div className="min-h-screen bg-background font-sans selection:bg-primary/10 selection:text-primary">
       <Header />
 
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="flex flex-col gap-12">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start">
           
-          {/* Centered Form */}
-          <div className="w-full max-w-xl mx-auto">
+          {/* Left Column: Form */}
+          <div className="lg:col-span-5 xl:col-span-4 order-1">
             <FeedbackForm />
           </div>
 
-          {/* Feedback Feed Below */}
-          <div className="w-full">
-            <div className="mb-8 text-center">
+          {/* Right Column: Feed */}
+          <div className="lg:col-span-7 xl:col-span-8 order-2">
+            <div className="mb-8">
               <h2 className="text-3xl font-bold tracking-tight">
                 Community Feedback
               </h2>
@@ -63,7 +63,7 @@ export default function Home() {
                 <p className="text-muted-foreground mt-1">Be the first to share your thoughts!</p>
               </div>
             ) : (
-              <div className="max-h-[600px] overflow-y-auto pr-4 space-y-6 scrollbar-thin scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 transition-colors">
+              <div className="max-h-[800px] overflow-y-auto pr-4 space-y-6 scrollbar-thin scrollbar-thumb-primary/20 hover:scrollbar-thumb-primary/40 transition-colors">
                 {sortedFeedbacks?.map((feedback, index) => (
                   <FeedbackCard 
                     key={feedback.id} 

@@ -82,10 +82,13 @@ export function FeedbackForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-[#5c3d2e] font-bold text-lg">Email</FormLabel>
+                <div className="flex items-center justify-between">
+                  <FormLabel className="text-[#5c3d2e] font-bold text-lg">Email</FormLabel>
+                  <span className="text-[10px] text-[#8b5e3c] font-bold uppercase opacity-60">Optional</span>
+                </div>
                 <FormControl>
                   <Input 
-                    placeholder="your@email.com" 
+                    placeholder="your@email.com (optional)" 
                     className="h-12 rounded-lg border-[#d4c49c] bg-[#fdfaf1]/50 focus:bg-white transition-colors" 
                     {...field} 
                   />

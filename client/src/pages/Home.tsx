@@ -14,21 +14,21 @@ export default function Home() {
   );
 
   return (
-    <div className="min-h-screen bg-background relative overflow-y-auto flex flex-col pb-20">
+    <div className="h-screen bg-background relative overflow-hidden flex flex-col pb-6">
       <Header />
 
-      <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-4">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-8">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-4 overflow-hidden">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 h-full">
           
           {/* Left Column: Form (40%) */}
-          <div className="lg:col-span-4">
-            <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50">
+          <div className="lg:col-span-4 h-full overflow-y-auto custom-scrollbar pr-2">
+            <div className="parchment-container p-10 border-2 border-[#d4c49c]/50">
               <FeedbackForm />
             </div>
           </div>
 
           {/* Right Column: Feed (60%) */}
-          <div className="lg:col-span-6 min-h-0">
+          <div className="lg:col-span-6 h-full min-h-0">
             <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50 flex flex-col overflow-hidden">
               <div className="mb-10 shrink-0">
                 <h2 className="text-4xl font-bold text-[#5c3d2e] mb-2">

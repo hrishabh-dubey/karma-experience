@@ -28,18 +28,18 @@ export default function Home() {
           </div>
 
           {/* Right Column: Feed (60%) */}
-          <div className="lg:col-span-6">
-            <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50 flex flex-col">
-              <div className="mb-10">
+          <div className="lg:col-span-6 min-h-0">
+            <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50 flex flex-col overflow-hidden">
+              <div className="mb-10 shrink-0">
                 <h2 className="text-4xl font-bold text-[#5c3d2e] mb-2">
                   Cosmic Voices
                 </h2>
                 <p className="text-[#8b5e3c] text-lg font-medium">
-                  See the impact of Karma shared by our community
+                  Witness the impact, how we change lives
                 </p>
               </div>
 
-              <div className="flex-1 overflow-y-auto custom-scrollbar pr-4 space-y-6">
+              <div className="flex-1 overflow-y-auto custom-scrollbar pr-4 space-y-6 min-h-0">
                 {isLoading ? (
                   <div className="space-y-6">
                     {[1, 2, 3].map((i) => (
@@ -53,7 +53,7 @@ export default function Home() {
                 ) : sortedFeedbacks?.length === 0 ? (
                   <div className="text-center py-20 parchment-card-refined border-dashed border-2">
                     <MessageSquareDashed className="w-12 h-12 text-[#c18c5d]/30 mx-auto mb-4" />
-                    <h3 className="text-xl font-bold text-[#5c3d2e]">No Karma Shared Yet</h3>
+                    <h3 className="text-xl font-bold text-[#5c3d2e]">No Experience Shared Yet</h3>
                   </div>
                 ) : (
                   sortedFeedbacks?.map((feedback, index) => (
@@ -64,11 +64,6 @@ export default function Home() {
                     />
                   ))
                 )}
-              </div>
-              
-              {/* Reference scroll indicator from image */}
-              <div className="absolute right-4 top-1/2 -translate-y-1/2 h-4/5 w-1 bg-[#d4c49c]/20 rounded-full hidden lg:block">
-                <div className="h-20 w-full bg-[#c18c5d] rounded-full" />
               </div>
             </div>
           </div>

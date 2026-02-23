@@ -49,7 +49,7 @@ export function FeedbackForm() {
     <div className="flex flex-col h-full">
       <div className="mb-6">
         <h2 className="text-3xl font-bold text-[#5c3d2e] mb-2">
-          Share Your Karma Experience
+          Share Your Experience
         </h2>
         <p className="text-[#8b5e3c] text-sm font-medium">
           Speak your mind and let your energy flow.<br />

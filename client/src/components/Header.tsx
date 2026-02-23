@@ -25,7 +25,7 @@ export function Header() {
               The Karma Compass
             </h1>
             <p className="text-[#8b5e3c] text-xl italic font-medium">
-              Share Your Karma & Enlighten the Journey
+              Find all your answers here
             </p>
           </div>
         </div>

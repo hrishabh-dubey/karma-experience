@@ -1,7 +1,8 @@
 import { type Feedback } from "@shared/schema";
 import { formatDistanceToNow } from "date-fns";
 import { motion } from "framer-motion";
-import { MessageSquare, User } from "lucide-react";
+import { MessageSquare, ChevronDown, ChevronUp } from "lucide-react";
+import { useState } from "react";
 
 interface FeedbackCardProps {
   feedback: Feedback;
@@ -9,6 +10,11 @@ interface FeedbackCardProps {
 }
 
 export function FeedbackCard({ feedback, index }: FeedbackCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  
+  // Estimate if message is long (roughly > 200 chars or many lines)
+  const isLongMessage = feedback.message.length > 250 || feedback.message.split('\n').length > 4;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
@@ -33,9 +39,22 @@ export function FeedbackCard({ feedback, index }: FeedbackCardProps) {
             about {formatDistanceToNow(new Date(feedback.createdAt))} ago
           </p>
           
-          <div className="text-[#5c3d2e]/90 text-base leading-relaxed">
+          <div className={`text-[#5c3d2e]/90 text-base leading-relaxed break-words ${!isExpanded ? 'line-clamp-4' : ''}`}>
             {feedback.message}
           </div>
+
+          {isLongMessage && (
+            <button
+              onClick={() => setIsExpanded(!isExpanded)}
+              className="mt-3 text-[#e67e22] font-bold text-sm flex items-center gap-1 hover:text-[#d35400] transition-colors"
+            >
+              {isExpanded ? (
+                <>Show Less <ChevronUp className="w-4 h-4" /></>
+              ) : (
+                <>Read More <ChevronDown className="w-4 h-4" /></>
+              )}
+            </button>
+          )}
         </div>
       </div>
       

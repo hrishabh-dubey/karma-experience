@@ -21,8 +21,8 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 h-full">
           
           {/* Left Column: Form (40%) */}
-          <div className="lg:col-span-4 h-full overflow-y-auto custom-scrollbar pr-2">
-            <div className="parchment-container p-10 border-2 border-[#d4c49c]/50">
+          <div className="lg:col-span-4 h-full min-h-0">
+            <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50 overflow-hidden">
               <FeedbackForm />
             </div>
           </div>

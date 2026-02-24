@@ -39,7 +39,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 sm:pr-4 space-y-6">
+              <div className="flex-1 min-h-0 overflow-y-auto custom-scrollbar pr-2 sm:pr-4 pb-4 space-y-6">
                 {isLoading ? (
                   <div className="space-y-6">
                     {[1, 2, 3].map((i) => (

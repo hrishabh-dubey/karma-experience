@@ -9,22 +9,17 @@ export function Header() {
           <span className="text-3xl sm:text-4xl lg:text-5xl text-[#5c3d2e] opacity-80 select-none">ॐ</span>
         </div>
 
-        <div className="flex items-center justify-center relative py-4">
-          {/* Logo Left-ish but aligned with title; smaller on mobile */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2">
-            <img 
-              src={logoImg} 
-              alt="Logo" 
-              className="h-14 sm:h-20 md:h-28 w-auto object-contain drop-shadow-md"
-            />
-          </div>
-
-          {/* Title and Tagline Center */}
+        <div className="flex flex-row items-center justify-center gap-4 py-4">
+          <img 
+            src={logoImg} 
+            alt="Logo" 
+            className="h-12 sm:h-16 md:h-28 w-auto object-contain drop-shadow-md flex-shrink-0"
+          />
           <div className="text-center">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#5c3d2e] mb-2 tracking-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#5c3d2e] mb-1 sm:mb-2 tracking-tight">
               The Karma Compass
             </h1>
-            <p className="text-[#8b5e3c] text-base sm:text-lg lg:text-xl italic font-medium">
+            <p className="text-[#8b5e3c] text-sm sm:text-base md:text-lg lg:text-xl italic font-medium">
               Find all your answers here
             </p>
           </div>

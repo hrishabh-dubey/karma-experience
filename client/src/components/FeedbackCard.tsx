@@ -20,9 +20,9 @@ export function FeedbackCard({ feedback, index }: FeedbackCardProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="parchment-card-refined p-6 border-2 border-[#d4c49c]/30 hover:border-primary/20 relative group overflow-hidden"
+      className="parchment-card-refined p-6 border-2 border-[#d4c49c]/30 hover:border-primary/20 relative group overflow-visible"
     >
-      <div className="flex items-start gap-4">
+      <div className="flex items-start gap-4 overflow-visible">
         <div className="h-14 w-14 rounded-full bg-gradient-to-br from-[#f39c12] to-[#e67e22] flex items-center justify-center text-white text-xl font-bold shadow-md border-2 border-white/30 flex-shrink-0">
           {feedback.name.charAt(0).toUpperCase()}
         </div>
@@ -58,8 +58,8 @@ export function FeedbackCard({ feedback, index }: FeedbackCardProps) {
         </div>
       </div>
       
-      {/* Small corner icon like in reference */}
-      <div className="absolute bottom-2 right-2 opacity-[0.05]">
+      {/* Small corner icon like in reference (clipped to card) */}
+      <div className="absolute bottom-2 right-2 opacity-[0.05] overflow-hidden pointer-events-none">
         <MessageSquare className="w-12 h-12" />
       </div>
     </motion.div>

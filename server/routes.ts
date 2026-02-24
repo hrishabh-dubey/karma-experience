@@ -13,6 +13,8 @@ export async function registerRoutes(
       const allFeedback = await storage.getFeedback();
       res.status(200).json(allFeedback);
     } catch (error) {
+      const errMsg = error instanceof Error ? error.message : String(error);
+      console.error("[GET /api/feedback] Error:", errMsg);
       res.status(500).json({ message: "Failed to fetch feedback" });
     }
   });
@@ -29,6 +31,8 @@ export async function registerRoutes(
           field: err.errors[0].path.join('.'),
         });
       }
+      const errMsg = err instanceof Error ? err.message : String(err);
+      console.error("[POST /api/feedback] Error:", errMsg);
       res.status(500).json({ message: "Failed to submit feedback" });
     }
   });

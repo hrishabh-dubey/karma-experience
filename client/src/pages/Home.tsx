@@ -14,32 +14,32 @@ export default function Home() {
   );
 
   return (
-    <div className="h-screen bg-background relative overflow-hidden flex flex-col pb-6">
+    <div className="min-h-screen bg-background relative overflow-x-hidden flex flex-col pb-6">
       <Header />
 
-      <main className="flex-1 max-w-6xl mx-auto w-full px-6 py-4 overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-10 gap-8 h-full">
+      <main className="flex-1 max-w-6xl mx-auto w-full px-4 sm:px-6 py-4 w-full min-w-0">
+        <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-8 h-auto lg:h-full">
           
           {/* Left Column: Form (40%) */}
-          <div className="lg:col-span-4 h-full min-h-0">
-            <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50 overflow-hidden">
+          <div className="lg:col-span-4 min-h-0 lg:h-full">
+            <div className="parchment-container p-4 sm:p-6 lg:p-10 min-h-0 lg:h-full border-2 border-[#d4c49c]/50 overflow-hidden">
               <FeedbackForm />
             </div>
           </div>
 
           {/* Right Column: Feed (60%) */}
-          <div className="lg:col-span-6 h-full min-h-0">
-            <div className="parchment-container p-10 h-full border-2 border-[#d4c49c]/50 flex flex-col overflow-hidden">
-              <div className="mb-10 shrink-0">
-                <h2 className="text-4xl font-bold text-[#5c3d2e] mb-2">
+          <div className="lg:col-span-6 min-h-0 lg:h-full flex flex-col">
+            <div className="parchment-container p-4 sm:p-6 lg:p-10 min-h-0 lg:h-full border-2 border-[#d4c49c]/50 flex flex-col overflow-hidden">
+              <div className="mb-6 lg:mb-10 shrink-0">
+                <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[#5c3d2e] mb-2">
                   Cosmic Voices
                 </h2>
-                <p className="text-[#8b5e3c] text-lg font-medium">
+                <p className="text-[#8b5e3c] text-base sm:text-lg font-medium">
                   Witness the impact, how we change lives
                 </p>
               </div>
 
-              <div className="flex-1 overflow-y-auto custom-scrollbar pr-4 space-y-6 min-h-0">
+              <div className="flex-1 min-h-[200px] lg:min-h-0 overflow-y-auto custom-scrollbar pr-2 sm:pr-4 space-y-6">
                 {isLoading ? (
                   <div className="space-y-6">
                     {[1, 2, 3].map((i) => (

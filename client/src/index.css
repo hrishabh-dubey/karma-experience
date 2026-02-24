@@ -40,6 +40,11 @@
       url("https://www.transparenttextures.com/patterns/parchment.png");
     background-attachment: fixed;
   }
+  @media (min-width: 1024px) {
+    body {
+      overflow: hidden;
+    }
+  }
 
   h1, h2, h3 {
     font-family: var(--font-serif);

@@ -10,12 +10,12 @@ export function Header() {
         </div>
 
         <div className="flex items-center justify-center relative py-4">
-          {/* Logo Left-ish but aligned with title */}
-          <div className="absolute left-0 top-1/2 -translate-y-1/2 hidden md:block">
+          {/* Logo Left-ish but aligned with title; smaller on mobile */}
+          <div className="absolute left-0 top-1/2 -translate-y-1/2">
             <img 
               src={logoImg} 
               alt="Logo" 
-              className="h-28 w-auto object-contain drop-shadow-md"
+              className="h-14 sm:h-20 md:h-28 w-auto object-contain drop-shadow-md"
             />
           </div>
 

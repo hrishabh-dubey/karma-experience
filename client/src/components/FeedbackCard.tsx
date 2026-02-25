@@ -2,7 +2,7 @@ import { type Feedback } from "@shared/schema";
 import { formatDistanceToNow } from "date-fns";
 import { motion } from "framer-motion";
 import { MessageSquare, ChevronDown, ChevronUp } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 interface FeedbackCardProps {
   feedback: Feedback;
@@ -11,23 +11,34 @@ interface FeedbackCardProps {
 
 export function FeedbackCard({ feedback, index }: FeedbackCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  
-  // Estimate if message is long (roughly > 200 chars or many lines)
-  const isLongMessage = feedback.message.length > 250 || feedback.message.split('\n').length > 4;
+  const [hasOverflow, setHasOverflow] = useState(false);
+  const messageRef = useRef<HTMLDivElement>(null);
+
+  // Measure if content is actually truncated (needs "Read more")
+  useEffect(() => {
+    if (isExpanded) return;
+    const el = messageRef.current;
+    if (!el) return;
+    const check = () => setHasOverflow(el.scrollHeight > el.clientHeight);
+    check();
+    const ro = new ResizeObserver(check);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [feedback.message, isExpanded]);
 
   return (
     <motion.div
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, delay: index * 0.05 }}
-      className="parchment-card-refined p-6 border-2 border-[#d4c49c]/30 hover:border-primary/20 relative group overflow-visible"
+      className="parchment-card-refined p-6 border-2 border-[#d4c49c]/30 hover:border-primary/20 relative group"
     >
-      <div className="flex items-start gap-4 overflow-visible">
+      <div className="flex items-start gap-4">
         <div className="h-14 w-14 rounded-full bg-gradient-to-br from-[#f39c12] to-[#e67e22] flex items-center justify-center text-white text-xl font-bold shadow-md border-2 border-white/30 flex-shrink-0">
           {feedback.name.charAt(0).toUpperCase()}
         </div>
         
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 min-w-0 flex flex-col">
           <div className="flex items-center justify-between mb-1">
             <h3 className="font-bold text-xl text-[#5c3d2e] truncate pr-4">
               {feedback.name}
@@ -36,30 +47,34 @@ export function FeedbackCard({ feedback, index }: FeedbackCardProps) {
           </div>
           
           <p className="text-[11px] text-[#8b5e3c] font-bold uppercase tracking-widest mb-3">
-            about {formatDistanceToNow(new Date(feedback.createdAt))} ago
+            {formatDistanceToNow(new Date(feedback.createdAt), { addSuffix: true })}
           </p>
           
-          <div className={`text-[#5c3d2e]/90 text-base leading-relaxed break-words ${!isExpanded ? 'line-clamp-4' : ''}`}>
+          <div
+            ref={messageRef}
+            className={`text-[#5c3d2e]/90 text-base leading-relaxed break-words ${!isExpanded ? "line-clamp-3" : ""}`}
+          >
             {feedback.message}
           </div>
 
-          {isLongMessage && (
+          {(hasOverflow || isExpanded) && (
             <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="mt-3 text-[#e67e22] font-bold text-sm flex items-center gap-1 hover:text-[#d35400] transition-colors"
+              type="button"
+              onClick={() => setIsExpanded((prev) => !prev)}
+              className="mt-3 text-[#e67e22] font-bold text-sm inline-flex items-center gap-1 hover:text-[#d35400] cursor-pointer touch-manipulation min-h-[44px] -mb-1"
             >
               {isExpanded ? (
-                <>Show Less <ChevronUp className="w-4 h-4" /></>
+                <>Show less <ChevronUp className="w-4 h-4 shrink-0" /></>
               ) : (
-                <>Read More <ChevronDown className="w-4 h-4" /></>
+                <>Read more <ChevronDown className="w-4 h-4 shrink-0" /></>
               )}
             </button>
           )}
         </div>
       </div>
       
-      {/* Small corner icon like in reference (clipped to card) */}
-      <div className="absolute bottom-2 right-2 opacity-[0.05] overflow-hidden pointer-events-none">
+      {/* Small corner icon - low opacity, no pointer events */}
+      <div className="absolute bottom-2 right-2 opacity-[0.05] pointer-events-none">
         <MessageSquare className="w-12 h-12" />
       </div>
     </motion.div>
